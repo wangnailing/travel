@@ -1,6 +1,9 @@
 package cn.travel.dao;
 
 import cn.travel.domain.Favorite;
+import cn.travel.domain.Route;
+
+import java.util.List;
 
 public interface FavoriteDao {
 
@@ -25,4 +28,12 @@ public interface FavoriteDao {
      * @param uid
      */
     void add(int i, int uid);
+
+    /**
+     * 我的收藏
+     * @param uid
+     */
+    int findTotalCount(int uid);
+
+    List<Route> findByPage(int start, int pageSize, int uid);
 }

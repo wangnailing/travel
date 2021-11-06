@@ -1,5 +1,8 @@
 package cn.travel.service;
 
+import cn.travel.domain.PageBean;
+import cn.travel.domain.Route;
+
 public interface FavoriteService {
 
     /**
@@ -16,4 +19,11 @@ public interface FavoriteService {
      * @param uid
      */
     void add(String rid, int uid);
-}
+
+    /**
+     * 查找我的收藏
+     * @param uid
+     */
+    public PageBean<Route> pageQueryFav(int currentPage, int pageSize, int uid);
+
+    }

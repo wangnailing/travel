@@ -178,4 +178,44 @@ public class RouteServlet extends BaseServlet {
 
     }
 
+    /**
+     * 我的收藏
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
+    public void pageQueryFav(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //1. 获取当前登录的用户
+
+        User user = (User) request.getSession().getAttribute("user");
+        int uid;//用户id
+        if(user == null){
+            //用户尚未登录
+            return ;
+        }else{
+            //用户已经登录
+            uid = user.getUid();
+        }
+
+        String currentPageStr = request.getParameter("currentPage");
+        String pageSizeStr = request.getParameter("pageSize");
+        //2.处理参数
+        int currentPage = 0;//当前页码，如果不传递，则默认为第一页
+        if(currentPageStr != null && currentPageStr.length() > 0){
+            currentPage = Integer.parseInt(currentPageStr);
+        }else{
+            currentPage = 1;
+        }
+
+        int pageSize = 0;//每页显示条数，如果不传递，默认每页显示5条记录
+        if(pageSizeStr != null && pageSizeStr.length() > 0){
+            pageSize = Integer.parseInt(pageSizeStr);
+        }else{
+            pageSize = 12;
+        }
+        //2. 调用service添加
+        PageBean<Route> favorite = favoriteService.pageQueryFav(currentPage,pageSize,uid);
+        writeValue(favorite,response);
+    }
     }
