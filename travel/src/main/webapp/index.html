@@ -23,8 +23,98 @@
       <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script>
+
+        $(function () {
+            $.get("route/findMoreLike",{},function (route){
+                var route_lis='';
+                for (var i = 0; i < route.length; i++) {
+                    var li = ' <div class="col-md-3">\n' +
+                        '<a href="route_detail.html?rid='+route[i].rid+'">\n' +
+                        '<img src="'+route[i].rimage+'" alt="">\n' +
+                        '<div class="has_border">\n' +
+                        '<h3>'+route[i].rname+'</h3>\n' +
+                        '<div class="price">网付价<em>￥</em><strong>'+route[i].price+'</strong><em>起</em></div>\n' +
+                        '</div>\n' +
+                        ' </a>\n' +
+                        '</div>\n';
+                    route_lis += li;
+                }
+                $("#popularity1").html(route_lis);
+            });
+            $.get("route/findNew",{},function (route){
+                var route_lis='';
+                for (var i = 0; i < route.length; i++) {
+                    var li = ' <div class="col-md-3">\n' +
+                        '<a href="route_detail.html?rid='+route[i].rid+'">\n' +
+                        '<img src="'+route[i].rimage+'" alt="">\n' +
+                        '<div class="has_border">\n' +
+                        '<h3>'+route[i].rname+'</h3>\n' +
+                        '<div class="price">网付价<em>￥</em><strong>'+route[i].price+'</strong><em>起</em></div>\n' +
+                        '</div>\n' +
+                        ' </a>\n' +
+                        '</div>\n';
+                    route_lis += li;
+                }
+                $("#newest1").html(route_lis);
+            });
+            $.get("route/findZhuti",{},function (route){
+                var route_lis='';
+                for (var i = 0; i < route.length; i++) {
+                    var li = ' <div class="col-md-3">\n' +
+                        '<a href="route_detail.html?rid='+route[i].rid+'">\n' +
+                        '<img src="'+route[i].rimage+'" alt="">\n' +
+                        '<div class="has_border">\n' +
+                        '<h3>'+route[i].rname+'</h3>\n' +
+                        '<div class="price">网付价<em>￥</em><strong>'+route[i].price+'</strong><em>起</em></div>\n' +
+                        '</div>\n' +
+                        ' </a>\n' +
+                        '</div>\n';
+                    route_lis += li;
+                }
+                $("#theme1").html(route_lis);
+            });
+            $.get("route/fingGuo",{},function (route){
+                var route_lis='';
+                for (var i = 0; i < route.length; i++) {
+
+                    var li = '<div class="col-md-4"> ' +
+                        '<a href="route_detail.html?rid='+route[i].rid+'"> ' +
+                        '<img src="'+route[i].rimage+'" alt=""> ' +
+                        '<div class="has_border"> ' +
+                        '<h3>'+route[i].rname+'</h3> ' +
+                        '<div class="price">网付价<em>￥</em><strong>'+route[i].price+'</strong><em>起</em></div> ' +
+                        '</div> ' +
+                        '</a> ' +
+                        '</div>';
+                    route_lis += li;
+                }
+                $("#guo").html(route_lis);
+            });
+            $.get("route/fingJing",{},function (route){
+                var route_lis='';
+                for (var i = 0; i < route.length; i++) {
+
+                    var li = '<div class="col-md-4"> ' +
+                        '<a href="route_detail.html?rid='+route[i].rid+'"> ' +
+                        '<img src="'+route[i].rimage+'" alt=""> ' +
+                        '<div class="has_border"> ' +
+                        '<h3>'+route[i].rname+'</h3> ' +
+                        '<div class="price">网付价<em>￥</em><strong>'+route[i].price+'</strong><em>起</em></div> ' +
+                        '</div> ' +
+                        '</a> ' +
+                        '</div>';
+                    route_lis += li;
+                }
+                $("#jing").html(route_lis);
+            });
+
+        });
+    </script>
+
 </head>
 <body>
+
 	<!--引入头部-->
     <div id="header"></div>
     <!-- banner start-->
@@ -89,7 +179,7 @@
                 <!-- Tab panes -->
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="popularity">
-                        <div class="row">
+                        <div class="row" id="popularity1">
                             <div class="col-md-3">
                                 <a href="javascript:;">
                                     <img src="images/jiangxuan_4.jpg" alt="">
@@ -129,7 +219,7 @@
                         </div>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="newest">
-                        <div class="row">
+                        <div class="row" id="newest1">
                             <div class="col-md-3">
                                 <a href="javascript:;">
                                     <img src="images/jiangxuan_1.jpg" alt="">
@@ -169,7 +259,7 @@
                         </div>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="theme">
-                        <div class="row">
+                        <div class="row" id="theme1">
                             <div class="col-md-3">
                                 <a href="javascript:;">
                                     <img src="images/jiangxuan_2.jpg" alt="">
@@ -225,7 +315,7 @@
                     <img src="images/guonei_1.jpg" alt="">
                 </div>
                 <div class="guone_r">
-                    <div class="row">
+                    <div class="row" id="guo">
                         <div class="col-md-4">
                             <a href="route_detail.html">
 								<img src="images/jiangxuan_4.jpg" alt="">
@@ -298,7 +388,7 @@
                     <img src="images/jiangwai_1.jpg" alt="">
                 </div>
                 <div class="guone_r">
-                    <div class="row">
+                    <div class="row"id="jing" >
                         <div class="col-md-4">
                             <a href="route_detail.html">
 								<img src="images/jiangxuan_4.jpg" alt="">

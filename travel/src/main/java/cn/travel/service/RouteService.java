@@ -3,6 +3,8 @@ package cn.travel.service;
 import cn.travel.domain.PageBean;
 import cn.travel.domain.Route;
 
+import java.util.List;
+
 /**
  * 线路Service
  */
@@ -30,4 +32,18 @@ public interface RouteService {
      * @return
      */
     public PageBean<Route> pageQueryOrder(int currentPage, int pageSize, String rname);
+
+    /**
+     * 人气旅游
+     * @return
+     */
+    List<Route> findMoreLike();
+
+    List<Route> findNew();
+
+    List<Route> findZhuti();
+
+    List<Route> fingJing();
+
+    List<Route> fingGuo();
 }

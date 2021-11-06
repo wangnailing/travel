@@ -127,4 +127,33 @@ public class RouteDaoImpl implements RouteDao {
         return query;
     }
 
+    @Override
+    public List<Route> findMoreLike() {
+        String sql="SELECT * FROM tab_route ORDER BY COUNT DESC LIMIT 0,4";
+        return template.query(sql,new BeanPropertyRowMapper<Route>(Route.class));
+    }
+
+    @Override
+    public List<Route> findZhuti() {
+        String sql="SELECT * FROM tab_route ORDER BY rid DESC LIMIT 0,4";
+        return template.query(sql,new BeanPropertyRowMapper<Route>(Route.class));    }
+
+    @Override
+    public List<Route> findNew() {
+        String sql="SELECT * FROM tab_route ORDER BY rdate DESC  LIMIT 0,4";
+        return template.query(sql,new BeanPropertyRowMapper<Route>(Route.class));
+    }
+
+    @Override
+    public List<Route> fingJing() {
+        String sql="SELECT * FROM tab_route WHERE cid = 4   LIMIT 0,6";
+        return template.query(sql,new BeanPropertyRowMapper<Route>(Route.class));
+    }
+
+    @Override
+    public List<Route> fingGuo() {
+        String sql="SELECT * FROM tab_route WHERE cid = 5 LIMIT 0,6";
+        return template.query(sql,new BeanPropertyRowMapper<Route>(Route.class));
+    }
+
 }

@@ -99,4 +99,29 @@ public class RouteServiceImpl implements RouteService {
         return pb;
     }
 
+    @Override
+    public List<Route> findMoreLike() {
+        return routeDao.findMoreLike();
+    }
+
+    @Override
+    public List<Route> findNew() {
+        return routeDao.findNew();
+    }
+
+    @Override
+    public List<Route> findZhuti() {
+        return routeDao.findZhuti();
+    }
+
+    @Override
+    public List<Route> fingJing() {
+        return routeDao.fingJing();
+    }
+
+    @Override
+    public List<Route> fingGuo() {
+        return routeDao.fingGuo();
+    }
+
 }

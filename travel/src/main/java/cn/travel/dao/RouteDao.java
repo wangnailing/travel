@@ -38,4 +38,14 @@ public interface RouteDao {
      * @return
      */
     public List<Route> findOrderByPage(int start, int pageSize, String rname);
+
+    List<Route> findMoreLike();
+
+    List<Route> findZhuti();
+
+    List<Route> findNew();
+
+    List<Route> fingJing();
+
+    List<Route> fingGuo();
 }

@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet("/route/*")
 public class RouteServlet extends BaseServlet {
@@ -218,4 +219,56 @@ public class RouteServlet extends BaseServlet {
         PageBean<Route> favorite = favoriteService.pageQueryFav(currentPage,pageSize,uid);
         writeValue(favorite,response);
     }
+
+    /**
+     * 人气旅游
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
+    public void findMoreLike(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<Route> route=routeService.findMoreLike();
+        //3.转为json写回客户端
+        writeValue(route,response);
     }
+
+    /**
+     * 主题旅游
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
+    public void findZhuti(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<Route> route=routeService.findZhuti();
+        //3.转为json写回客户端
+        writeValue(route,response);
+    }
+
+    /**
+     * 最新旅游
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
+    public void findNew(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<Route> route = routeService.findNew();
+        //3.转为json写回客户端
+        writeValue(route, response);
+    }
+
+    public void fingGuo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<Route> route = routeService.fingGuo();
+        //3.转为json写回客户端
+        writeValue(route, response);
+    }
+
+    public void fingJing(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<Route> route = routeService.fingJing();
+        //3.转为json写回客户端
+        writeValue(route, response);
+    }
+    }
+
